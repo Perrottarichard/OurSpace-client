@@ -4,20 +4,12 @@ const GlobalStyle = createGlobalStyle`
 	html {
 		font-size: 16px;
 		box-sizing: border-box;
+		background: white;
 	}
 	*, *:before, *:after {
 		padding: 0;
 		margin: 0;
 		box-sizing: inherit;
-	}
-	body::-webkit-scrollbar {
-		width: 0.25rem;
-	}
-	body::-webkit-scrollbar-track {
-		background: ${(props) => props.theme.bg};
-	}
-	body::-webkit-scrollbar-thumb {
-		background: ${(props) => props.theme.blue};
 	}
 	body {
 		font-size: 1rem;
@@ -41,21 +33,8 @@ const GlobalStyle = createGlobalStyle`
 	input:focus, textarea:focus, button:focus, video:focus {
 			outline: none;
 	}
-	button {
-		font-family: ${(props) => props.theme.font}, sans-serif;
-		font-size: 1rem;
-		cursor: pointer;
-	}
 	textarea {
 		resize: none;
-	}
-	video[poster]{
-    object-fit: cover;
-  }
-  .vjs-poster {
-    background-size: cover;
-    background-position: inherit;
-  }
 	
 	@media screen and (max-width: 500px) {
 		body {

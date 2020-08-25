@@ -1,23 +1,53 @@
 import React, { useState, useEffect, createContext } from "react";
 
 const darkTheme = {
-  bg: "#0B1622",
-  primaryColor: "#9FADBD",
-  secondaryColor: "#8596A5",
-  tertiaryColor: "#151F2E",
+  bg: "#2e2e36",
+  messageText: "white",
+  bubble: '#1f1f1d',
+  bubbleText: 'white',
+  bubbleOther: 'white',
+  otherText: '#1f1f1d',
+  messageBg: "yellow",
+  boxBg: "#505052",
+  button: '"#cdcdd4"',
+  buttonText: "black",
+  left: '#2e2e36',
+  inputBg: '#3b3b3d',
+  inputText: 'white',
+  closeIcon: '#505052'
 };
 
 const lightTheme = {
-  bg: "#E5EBF1",
-  primaryColor: "#26343F",
-  secondaryColor: "#404E5C",
-  tertiaryColor: "#FBFBFB",
+  bg: "#e1e1e3",
+  messageText: "#30302f",
+  bubble: '#bce3e6',
+  bubbleText: '#30302f',
+  bubbleOther: '#e1e1e3',
+  otherText: 'black',
+  messageBg: "#4c4cad",
+  boxBg: "#ffffff",
+  button: "#4c4cad",
+  buttonText: "white",
+  left: 'white',
+  inputBg: 'white',
+  inputText: '#30302f',
+  closeIcon: 'white'
 };
 const nurpleTheme = {
-  bg: "#59076b",
-  primaryColor: "white",
-  secondaryColor: "#f7d272",
-  tertiaryColor: "#f590df",
+  bg: "#3d0369",
+  messageText: '#360257',
+  bubble: '#fbbdff',
+  bubbleText: '#3d0369',
+  bubbleOther: '#3d0369',
+  otherText: '#fbbdff',
+  messageBg: "#f50fa8",
+  boxBg: "#94ff97",
+  button: "#f50fa8",
+  buttonText: "white",
+  left: 'white',
+  inputBg: 'white',
+  inputText: '#440673',
+  closeIcon: 'white'
 };
 
 const themeVars = {

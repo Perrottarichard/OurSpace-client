@@ -1,0 +1,5 @@
+.messages-scroll {
+  padding: 10;
+  overflow: auto;
+  flex: auto;
+}

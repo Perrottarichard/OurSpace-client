@@ -1,10 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import queryString from 'query-string'
 import io from 'socket.io-client'
+import styled from 'styled-components'
 import InfoHeader from './InfoHeader'
 import InputBox from './InputBox'
 import Messages from './Messages'
 import ThemeSelect from './ThemeSelect'
+
+const OuterDiv = styled.div`
+display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  height: 100vh;
+  background-color: ${props => props.theme.bg};
+  padding-bottom: 5rem;
+`
+
+const InnerDiv = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+background: ${props => props.theme.boxBg};
+border-radius: 8px;
+height: 60%;
+width: 35%;
+@media (min-width: 320px) and (max-width: 480px) {
+    width: 100%;
+    height: 100%;
+  }
+`
 
 let socket
 
@@ -46,10 +71,16 @@ const Chat = ({ location }) => {
 
   return (
     <div>
-      <ThemeSelect />
-      <InfoHeader room={room} />
-      <Messages messages={messages} name={name} />
-      <InputBox message={message} setMessage={setMessage} sendMessage={sendMessage} />
+      <div style={{ display: 'block', textAlign: 'center' }}>
+        <ThemeSelect />
+      </div>
+      <OuterDiv>
+        <InnerDiv>
+          <InfoHeader room={room} />
+          <Messages messages={messages} name={name} />
+          <InputBox message={message} setMessage={setMessage} sendMessage={sendMessage} />
+        </InnerDiv>
+      </OuterDiv>
     </div>
   )
 }

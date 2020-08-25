@@ -1,16 +1,48 @@
 import React, { useContext } from 'react'
 import { AppThemeContext } from '../contexts/AppThemeContext'
-import { Button, ButtonGroup } from 'reactstrap'
+import styled from 'styled-components'
+
+const LightButton = styled.button`
+color: #30302f;
+text-transform: uppercase;
+text-decoration: none;
+background: #e1e1e3;
+padding: 15px;
+display: inline-block;
+border: none;
+width: 6rem;
+margin: 5px;
+`
+const DarkButton = styled.button`
+color: white;
+text-transform: uppercase;
+text-decoration: none;
+background: #2e2e36;
+padding: 15px;
+display: inline-block;
+border: none;
+width: 6rem;
+margin: 5px;
+`
+const NurpleButton = styled.button`
+color: white;
+text-transform: uppercase;
+text-decoration: none;
+background: #3d0369;
+padding: 15px;
+display: inline-block;
+border: none;
+width: 6rem;
+margin: 5px;
+`
 
 const ThemeSelect = () => {
   const { selection } = useContext(AppThemeContext)
   return (
-    <div>
-      <ButtonGroup size="lg">
-        <Button value='light' onClick={(event) => selection(event)}>Light</Button>
-        <Button value='dark' onClick={(event) => selection(event)}>Dark</Button>
-        <Button value='nurple' onClick={(event) => selection(event)}>Nurple</Button>
-      </ButtonGroup>
+    <div style={{ paddingTop: '3rem' }}>
+      <LightButton value='light' onClick={(event) => selection(event)}>Light</LightButton>
+      <DarkButton value='dark' onClick={(event) => selection(event)}>Dark</DarkButton>
+      <NurpleButton value='nurple' onClick={(event) => selection(event)}>Nurple</NurpleButton>
     </div>
   )
 }
