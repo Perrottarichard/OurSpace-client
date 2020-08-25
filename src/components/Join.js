@@ -1,5 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const Heading = styled.h1`
+color: ${props => props.theme.primaryColor};
+font-size: 3rem;
+text-align: center
+`
 
 
 const Join = () => {
@@ -10,7 +17,7 @@ const Join = () => {
   return (
     <div>
       <div>
-        <h1>Join</h1>
+        <Heading>Join</Heading>
         <div>
           <input placeholder='Name' type='text' onChange={(e) => setName(e.target.value)}></input>
         </div>
@@ -21,7 +28,6 @@ const Join = () => {
           <button type='submit'>Sign In</button>
         </Link>
       </div>
-
     </div>
   )
 }

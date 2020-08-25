@@ -4,6 +4,7 @@ import io from 'socket.io-client'
 import InfoHeader from './InfoHeader'
 import InputBox from './InputBox'
 import Messages from './Messages'
+import ThemeSelect from './ThemeSelect'
 
 let socket
 
@@ -45,6 +46,7 @@ const Chat = ({ location }) => {
 
   return (
     <div>
+      <ThemeSelect />
       <InfoHeader room={room} />
       <Messages messages={messages} name={name} />
       <InputBox message={message} setMessage={setMessage} sendMessage={sendMessage} />
