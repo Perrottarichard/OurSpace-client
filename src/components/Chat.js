@@ -33,7 +33,7 @@ overflow: auto;
 
 `
 
-let socket
+let socket;
 
 const Chat = ({ location }) => {
   const [name, setName] = useState('')
@@ -42,27 +42,21 @@ const Chat = ({ location }) => {
   const [message, setMessage] = useState('')
   const EP = 'https://ourspace-server.herokuapp.com/'
 
-  const sendMessage = (event) => {
-    event.preventDefault()
-    if (message) {
-      socket.emit('sendMessage', message)
-      setMessage('')
-    }
-  }
-
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
     setName(name)
     setRoom(room)
 
     socket = io(EP)
-    socket.emit('join', { name, room })
-
-    return () => {
-      socket.emit('disconnect')
-      socket.off()
-    }
-
+    socket.emit('join', { name, room }, (error) => {
+      if (error) {
+        alert(error)
+      }
+    })
+    // return () => {
+    //   socket.emit('disconnect')
+    //   socket.off()
+    // }
   }, [EP, location.search])
 
   useEffect(() => {
@@ -70,6 +64,14 @@ const Chat = ({ location }) => {
       setMessages([...messages, message])
     })
   }, [messages])
+
+  const sendMessage = (event) => {
+    event.preventDefault()
+    if (message) {
+      socket.emit('sendMessage', message)
+      setMessage('')
+    }
+  }
 
   return (
     <div>
