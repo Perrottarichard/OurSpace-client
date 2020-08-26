@@ -25,10 +25,12 @@ background: ${props => props.theme.boxBg};
 border-radius: 8px;
 height: 60%;
 width: 35%;
+overflow: auto;
 @media (min-width: 320px) and (max-width: 480px) {
     width: 100%;
     height: 100%;
   }
+
 `
 
 let socket
