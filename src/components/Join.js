@@ -23,7 +23,7 @@ font-size: 2rem;
 text-align: center;
 `
 const StyledSection = styled.section`
-background-color: #4e4e4f;
+background-color: #949494;
 border-style: solid;
 border-color: gray;
 border-width: 1px;
@@ -70,7 +70,7 @@ const Join = () => {
   return (
     <Wrapper>
       <Heading><FontAwesomeIcon icon={faComments} style={{ color: '#3254a8', fontSize: '6rem' }} /></Heading>
-      <SubHeading>Join</SubHeading>
+      <SubHeading>Enter</SubHeading>
       <hr style={{ width: '20rem', margin: 'auto', marginBottom: 20 }} />
       <StyledSection>
         <Input placeholder='Name' type='text' onChange={(e) => setName(e.target.value)}></Input>
