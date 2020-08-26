@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
 	*, *:before, *:after {
 		padding: 0;
 		margin: 0;
-		box-sizing: inherit;
+		box-sizing: border-box;
 	}
 	body {
 		font-size: 1rem;
@@ -17,7 +17,6 @@ const GlobalStyle = createGlobalStyle`
 		color: ${(props) => props.theme.primaryColor};
 		background-color: ${(props) => props.theme.bg};
 		line-height: 1.8;
-		overflow-x: hidden;
 	}
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: normal;
