@@ -47,7 +47,7 @@ const Chat = ({ location }) => {
     setName(name)
     setRoom(room)
 
-    socket = io(EP, { transports: ['websocket'] })
+    socket = io(EP)
     socket.on('connect', function () {
       console.log('connected ws')
     })
