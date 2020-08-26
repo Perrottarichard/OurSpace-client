@@ -2,7 +2,7 @@ import React from 'react'
 import ScrollToBottom from 'react-scroll-to-bottom'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
-import styles from '../styles/Messages.css'
+import '../styles/Messages.css'
 import Message from './Message'
 
 

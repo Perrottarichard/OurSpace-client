@@ -38,7 +38,7 @@ const Chat = ({ location }) => {
   const [room, setRoom] = useState('')
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
-  const ENDPOINT = 'localhost:5000'
+  const EP = 'https://ourspace-server.herokuapp.com/'
 
   const sendMessage = (event) => {
     event.preventDefault()
@@ -53,7 +53,7 @@ const Chat = ({ location }) => {
     setName(name)
     setRoom(room)
 
-    socket = io(ENDPOINT)
+    socket = io(EP)
     socket.emit('join', { name, room })
 
     return () => {
@@ -61,7 +61,7 @@ const Chat = ({ location }) => {
       socket.off()
     }
 
-  }, [ENDPOINT, location.search])
+  }, [EP, location.search])
 
   useEffect(() => {
     socket.on('message', (message) => {
