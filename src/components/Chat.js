@@ -40,7 +40,7 @@ const Chat = ({ location }) => {
   const [room, setRoom] = useState('')
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
-  const EP = 'https://ourspace-server.herokuapp.com'
+  const EP = 'https://ourspace-server.herokuapp.com/'
 
   const sendMessage = (event) => {
     event.preventDefault()
