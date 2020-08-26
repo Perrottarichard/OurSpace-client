@@ -53,6 +53,7 @@ const Chat = ({ location }) => {
     })
     socket.emit('join', { name, room }, (error) => {
       if (error) {
+        console.log(error)
         alert(error)
       }
     })
