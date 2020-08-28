@@ -49,10 +49,11 @@ const Chat = ({ location }) => {
 
     if (!client) {
       socket = io('https://r-space-server.herokuapp.com', { transports: ['websocket'] })
+      socket.emit('join', { name, room })
       setClient(true)
     }
-    socket.emit('join', { name, room })
-  }, [location.search])
+
+  }, [location.search, client])
 
   useEffect(() => {
     socket.on('message', (message) => {
