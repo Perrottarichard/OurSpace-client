@@ -46,9 +46,10 @@ const Chat = ({ location }) => {
     const { name, room } = queryString.parse(location.search)
     setName(name)
     setRoom(room)
+    //why isn't this working
 
     if (!client) {
-      socket = io('https://r-space-server.herokuapp.com/', { transports: ['websocket, polling'] })
+      socket = io('wss://r-space-server.herokuapp.com/', { transports: ['websocket, polling'] })
       setClient(true)
     }
 
