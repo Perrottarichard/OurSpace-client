@@ -48,7 +48,7 @@ const Chat = ({ location }) => {
     setRoom(room)
 
     if (!client) {
-      socket = io('https://r-space-server.herokuapp.com', { transports: ['websocket', 'polling'] })
+      socket = io('https://r-space-server.herokuapp.com', { transports: ['polling'] })
       socket.emit('join', { name, room })
       setClient(true)
     }
