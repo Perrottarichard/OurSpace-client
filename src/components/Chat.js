@@ -49,7 +49,7 @@ const Chat = ({ location }) => {
     //why isn't this working
 
     if (!client) {
-      socket = io('wss://r-space-server.herokuapp.com/', { transports: ['websocket, polling'] })
+      socket = io('https://r-space-server.herokuapp.com/', { transports: ['websocket, polling'] })
       setClient(true)
     }
 
