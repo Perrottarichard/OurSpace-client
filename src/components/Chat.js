@@ -40,34 +40,37 @@ const Chat = ({ location }) => {
   const [room, setRoom] = useState('')
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
-  const EP = 'https://ourspace-server.herokuapp.com/'
+  const [client, setClient] = useState(false)
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
     setName(name)
     setRoom(room)
 
-    socket = io(EP, { transport: ['websocket'] })
+    if (!client) {
+      socket = io('https://ourspace-server.herokuapp.com/')
+      setClient(true)
+    }
+
     socket.on('connect', function () {
       console.log('connected ws')
+      console.log(socket.id)
     })
     socket.emit('join', { name, room }, (error) => {
       if (error) {
         console.log(error)
+        console.log(socket.id)
         alert(error)
       }
     })
-    // return () => {
-    //   socket.emit('disconnect')
-    //   socket.off()
-    // }
-  }, [EP, location.search])
+  }, [client, location.search])
 
   useEffect(() => {
     socket.on('message', (message) => {
-      setMessages([...messages, message])
+      console.log(socket.id)
+      setMessages(messages => [...messages, message])
     })
-  }, [messages])
+  }, [])
 
   const sendMessage = (event) => {
     event.preventDefault()
