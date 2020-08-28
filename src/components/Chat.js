@@ -46,30 +46,24 @@ const Chat = ({ location }) => {
     const { name, room } = queryString.parse(location.search)
     setName(name)
     setRoom(room)
-    //why isn't this working
 
     if (!client) {
-      socket = io('https://r-space-server.herokuapp.com/', { secure: true })
+      socket = io('https://r-space-server.herokuapp.com', { transports: ['websocket'] })
       setClient(true)
     }
-
-    socket.on('connect', function () {
-      console.log('connected ws')
-      console.log(socket.id)
-    })
-    socket.emit('join', { name, room }, (error) => {
-      if (error) {
-        console.log(error)
-        console.log(socket.id)
-        alert(error)
-      }
-    })
-  }, [client, location.search])
+    socket.emit('join', { name, room })
+  }, [location.search])
 
   useEffect(() => {
     socket.on('message', (message) => {
       console.log(socket.id)
       setMessages(messages => [...messages, message])
+    })
+  }, [])
+
+  useEffect(() => {
+    socket.on('disconnect', () => {
+      console.log('disconnect')
     })
   }, [])
 
