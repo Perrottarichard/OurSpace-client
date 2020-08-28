@@ -48,7 +48,15 @@ const Chat = ({ location }) => {
     setRoom(room)
 
     if (!client) {
-      socket = io('https://r-space-server.herokuapp.com/', { transport: ['websocket', 'polling'] })
+      socket = io('https://r-space-server.herokuapp.com/', {
+        transportOptions: {
+          polling: {
+            extraHeaders: {
+              'Access-Control-Allow-Origin': 'https://r-space-server.herokuapp.com'
+            }
+          }
+        }
+      })
       setClient(true)
     }
 
