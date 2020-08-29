@@ -30,7 +30,7 @@ width: 100%;
 letter-spacing: 0;
 color: inherit;
 float: left;
-font-size: 1em;
+font-size: 1rem;
 word-wrap: break-word;
 `
 const BubbleUser = styled.div`

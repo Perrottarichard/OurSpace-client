@@ -6,6 +6,7 @@ import InfoHeader from './InfoHeader'
 import InputBox from './InputBox'
 import Messages from './Messages'
 import ThemeSelect from './ThemeSelect'
+import UserBox from './UserBox'
 
 const OuterDiv = styled.div`
 display: flex;
@@ -23,12 +24,12 @@ flex-direction: column;
 justify-content: space-between;
 background: ${props => props.theme.boxBg};
 border-radius: 8px;
-height: 60%;
-width: 35%;
+height: 80%;
+width: 40%;
 overflow: auto;
-@media (min-width: 320px) and (max-width: 480px) {
-    width: 100%;
-    height: 100%;
+@media (max-width: 600px) {
+    width: 95%;
+    height: 95%;
   }
 
 `
@@ -40,7 +41,9 @@ const Chat = ({ location }) => {
   const [room, setRoom] = useState('')
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
+  const [users, setUsers] = useState('')
   const [client, setClient] = useState(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
@@ -49,6 +52,7 @@ const Chat = ({ location }) => {
 
     if (!client) {
       socket = io('https://r-space-server.herokuapp.com', { transports: ['polling'] })
+      // socket = io('http://localhost:5000', { transports: ['websocket'] })
       socket.emit('join', { name, room })
       setClient(true)
     }
@@ -60,11 +64,21 @@ const Chat = ({ location }) => {
       console.log(socket.id)
       setMessages(messages => [...messages, message])
     })
+
+    socket.on('roomData', ({ users }) => {
+      setUsers(users)
+    })
   }, [])
 
   useEffect(() => {
     socket.on('disconnect', () => {
       console.log('disconnect')
+    })
+  }, [])
+
+  useEffect(() => {
+    socket.on('exception', (error) => {
+      setError(error)
     })
   }, [])
 
@@ -84,9 +98,11 @@ const Chat = ({ location }) => {
       <OuterDiv>
         <InnerDiv>
           <InfoHeader room={room} />
+          {error ? <h2 style={{ color: 'red', margin: '10px' }}>{error.errorMessage}</h2> : null}
           <Messages messages={messages} name={name} />
           <InputBox message={message} setMessage={setMessage} sendMessage={sendMessage} />
         </InnerDiv>
+        <UserBox users={users} />
       </OuterDiv>
     </div>
   )

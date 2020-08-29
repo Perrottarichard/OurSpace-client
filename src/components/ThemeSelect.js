@@ -12,6 +12,10 @@ display: inline-block;
 border: none;
 width: 6rem;
 margin: 5px;
+@media (max-width: 330px) {
+  width: 4rem;
+  font-size: 10px;
+}
 `
 const DarkButton = styled.button`
 color: white;
@@ -23,6 +27,10 @@ display: inline-block;
 border: none;
 width: 6rem;
 margin: 5px;
+@media (max-width: 330px) {
+  width: 4rem;
+  font-size: 10px;
+}
 `
 const NurpleButton = styled.button`
 color: white;
@@ -34,6 +42,10 @@ display: inline-block;
 border: none;
 width: 6rem;
 margin: 5px;
+@media (max-width: 330px) {
+  width: 4rem;
+  font-size: 10px;
+}
 `
 
 const ThemeSelect = () => {
