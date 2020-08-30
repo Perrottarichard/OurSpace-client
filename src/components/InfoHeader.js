@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
+
 const InfoDiv = styled.div`
 display: flex;
   align-items: center;
@@ -31,7 +32,7 @@ const InfoHeader = ({ room }) => {
   return (
     <InfoDiv>
       <Left>
-        <h3>{room}</h3>
+        <h3>{room.toLowerCase()}</h3>
       </Left>
       <Right>
         <a href='/'><FontAwesomeIcon icon={faTimesCircle} style={{ fontSize: '1rem' }} /></a>

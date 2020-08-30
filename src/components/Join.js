@@ -34,6 +34,9 @@ margin-top: 20;
 padding: 10px;
 padding-top: 3rem;
 margin-bottom: 20;
+@media (max-width: 420px) {
+  width: 80%;
+}
 `
 const Input = styled.input`
 padding: 10px;

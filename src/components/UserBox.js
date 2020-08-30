@@ -59,7 +59,7 @@ color: ${ props => props.theme.button};
   font-size: 1rem;
 }
 `
-const ChatBoxP = styled.p`
+export const ChatBoxP = styled.p`
 font-size: 1rem;
 color: ${props => props.theme.otherText}
 `

@@ -41,11 +41,11 @@ const nurpleTheme = {
   bubbleOther: '#3d0369',
   otherText: '#fbbdff',
   messageBg: "#f50fa8",
-  boxBg: "#94ff97",
+  boxBg: "#bd7aff",
   button: "#f50fa8",
   buttonText: "white",
   left: 'white',
-  inputBg: 'white',
+  inputBg: '#fbbdff',
   inputText: '#440673',
   closeIcon: 'white'
 };

@@ -7,15 +7,15 @@ import InputBox from './InputBox'
 import Messages from './Messages'
 import ThemeSelect from './ThemeSelect'
 import UserBox from './UserBox'
+import UserBoxMobile from './UserBoxMobile'
 
 const OuterDiv = styled.div`
 display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0;
-  height: 100vh;
+  margin: auto;
+  height: 90vh;
   background-color: ${props => props.theme.bg};
-  padding-bottom: 5rem;
 `
 
 const InnerDiv = styled.div`
@@ -29,7 +29,7 @@ width: 40%;
 overflow: auto;
 @media (max-width: 600px) {
     width: 95%;
-    height: 95%;
+    height: 80%;
   }
 
 `
@@ -89,15 +89,21 @@ const Chat = ({ location }) => {
       setMessage('')
     }
   }
-
+  const [modal, setModal] = useState(false)
+  const toggle = () => {
+    setModal(!modal)
+  }
   return (
     <div>
       <div style={{ display: 'block', textAlign: 'center' }}>
         <ThemeSelect />
+        <div style={{ display: 'block', textAlign: 'center' }}>
+          <UserBoxMobile users={users} />
+        </div>
       </div>
       <OuterDiv>
         <InnerDiv>
-          <InfoHeader room={room} />
+          <InfoHeader room={room} users={users} toggle={toggle} />
           {error ? <h2 style={{ color: 'red', margin: '10px' }}>{error.errorMessage}</h2> : null}
           <Messages messages={messages} name={name} />
           <InputBox message={message} setMessage={setMessage} sendMessage={sendMessage} />
