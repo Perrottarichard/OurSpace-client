@@ -10,16 +10,16 @@ height: 100vh;
 width: 100vw;
 justify-content: center;
 margin: 0;
-background-color: white;
+background-color: ${props => props.theme.bg};
 `
 const SubHeading = styled.h1`
-color: ${props => props.theme.primaryColor};
+color: ${props => props.theme.otherText};
 font-size: 2rem;
 text-align: center;
 margin-top: 10%;
 `
 const StyledSection = styled.section`
-background-color:#c5c7c9;
+background-color: ${props => props.theme.bubbleOther};
 border-style: solid;
 border-color: gray;
 border-width: 1px;
@@ -49,10 +49,10 @@ border-radius: 5px;
 border-width: 0px;
 `
 export const Button = styled.button`
-  color: #fff !important;
+  color: ${props => props.theme.buttonText};
   text-transform: uppercase;
   text-decoration: none;
-  background: #3254a8;
+  background: ${props => props.theme.button};
   padding: 20px;
   -webkit-border-radius: 5px;
   display: inline-block;
