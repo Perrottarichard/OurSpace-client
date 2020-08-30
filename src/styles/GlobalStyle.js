@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
 	html {
 		font-size: 16px;
 		box-sizing: border-box;
-		background: white;
+		background: ${props => props.theme.bg};
 	}
 	*, *:before, *:after {
 		padding: 0;
@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 		font-family: ${(props) => props.theme.font}, sans-serif;
 		color: ${(props) => props.theme.primaryColor};
 		background-color: ${(props) => props.theme.bg};
-		line-height: 1.8;
+		line-height: 1.4;
 	}
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: normal;

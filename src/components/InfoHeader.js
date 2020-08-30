@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { faPiggyBank } from '@fortawesome/free-solid-svg-icons'
 
 
 const InfoDiv = styled.div`
@@ -28,12 +29,20 @@ display: flex;
   margin-right: 0.5rem;
   color: ${props => props.theme.closeIcon}
 `
-const InfoHeader = ({ room }) => {
+const PigDiv = styled.div`
+color: ${props => props.theme.bg}
+`
+const InfoHeader = ({ room, piglify }) => {
   return (
     <InfoDiv>
       <Left>
         <h3>{room.toLowerCase()}</h3>
       </Left>
+      {piglify ?
+        <PigDiv>
+          <FontAwesomeIcon icon={faPiggyBank} />
+        </PigDiv>
+        : null}
       <Right>
         <a href='/'><FontAwesomeIcon icon={faTimesCircle} style={{ fontSize: '1rem' }} /></a>
       </Right>

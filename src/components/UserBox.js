@@ -16,17 +16,7 @@ background-color: ${props => props.theme.bg};
 // border-width: 5px;
 border-radius: 5px;
 color: ${props => props.theme.bubbleText};
-@media (max-width: 800px) {
-  width: 25%;
-}
-
-@media (max-width: 700px) {
-  width: 30%;
-}
-@media (max-width: 600px) {
-  display: none;
-}
-@media (max-width: 480px) {
+@media (max-width: 1100px) {
   display: none;
 }
 `

@@ -16,6 +16,12 @@ display: flex;
   margin: auto;
   height: 90vh;
   background-color: ${props => props.theme.bg};
+  @media (max-width: 1100px) {
+    height: 80vh;
+  }
+  @media (max-width: 600px) {
+    height: 75vh;
+  }
 `
 
 const InnerDiv = styled.div`
@@ -26,10 +32,17 @@ background: ${props => props.theme.boxBg};
 border-radius: 8px;
 height: 80%;
 width: 40%;
+max-width: 600px;
 overflow: auto;
+@media (max-width: 1100px) {
+  width: 75%;
+  height: 100%;
+  margin-top: 10px;
+}
 @media (max-width: 600px) {
     width: 95%;
-    height: 80%;
+    height: 100%;
+    margin-top: 10px;
   }
 
 `
@@ -44,6 +57,7 @@ const Chat = ({ location }) => {
   const [users, setUsers] = useState('')
   const [client, setClient] = useState(false)
   const [error, setError] = useState(null)
+  const [piglify, setPiglify] = useState(true)
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
@@ -93,19 +107,22 @@ const Chat = ({ location }) => {
   const toggle = () => {
     setModal(!modal)
   }
+  const togglePig = () => {
+    setPiglify(!piglify)
+  }
   return (
     <div>
       <div style={{ display: 'block', textAlign: 'center' }}>
-        <ThemeSelect />
+        <ThemeSelect togglePig={togglePig} />
         <div style={{ display: 'block', textAlign: 'center' }}>
           <UserBoxMobile users={users} />
         </div>
       </div>
       <OuterDiv>
         <InnerDiv>
-          <InfoHeader room={room} users={users} toggle={toggle} />
+          <InfoHeader room={room} users={users} toggle={toggle} piglify={piglify} />
           {error ? <h2 style={{ color: 'red', margin: '10px' }}>{error.errorMessage}</h2> : null}
-          <Messages messages={messages} name={name} />
+          <Messages messages={messages} name={name} piglify={piglify} togglePig={togglePig} />
           <InputBox message={message} setMessage={setMessage} sendMessage={sendMessage} />
         </InnerDiv>
         <UserBox users={users} />

@@ -14,7 +14,7 @@ margin-bottom: 0;
 background-color: ${props => props.theme.bg};
 border-radius: 5px;
 color: ${props => props.theme.bubbleText};
-@media (min-width: 600px) {
+@media (min-width: 1100px) {
   display: none;
 }
 `
@@ -32,7 +32,7 @@ padding: 10px;
 font-size: 1.5rem;
 background-color: ${ props => props.theme.bubbleOther};
 color: ${ props => props.theme.otherText};
-@media(mix-width: 600px) {
+@media(min-width: 1100px) {
   display: none;
 }
 `

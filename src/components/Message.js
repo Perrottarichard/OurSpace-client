@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import ReactEmoji from 'react-emoji'
 
 const MessageWrapperUser = styled.div`
@@ -50,7 +48,53 @@ background: ${props => props.theme.bubbleOther};
   max-width: 80%;
 `
 
-const Message = ({ message: { user, text }, name }) => {
+const Message = ({ message: { user, text }, name, piglify }) => {
+
+  function translatePigLatin(str) {
+    let words = str.split(" ");
+    let vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    let phrase = []
+    words.forEach(word => {
+      let pigString = '';
+      for (var i = 0; i < word.length; i++) {
+        for (var j = 0; j < vowels.length; j++) {
+          if (word[0] === vowels[j]) {
+            pigString = 'way'
+            let finalString = word.concat(pigString);
+            return phrase.push(finalString);
+          }
+          else if ((word[i] === 't' && word[i + 1] === 'h') && pigString === '') {
+            pigString = 'ay'
+            let finalString = word.slice(2,).concat(word.slice(0, 2)).concat(pigString);
+            return phrase.push(finalString);
+          }
+          else if ((word[i] === 'c' && word[i + 1] === 'h') && pigString === '') {
+            pigString = 'ay'
+            let finalString = word.slice(2,).concat(word.slice(0, 2)).concat(pigString);
+            return phrase.push(finalString);
+          }
+          else if ((word[i] === 's' && word[i + 1] === 'p') && pigString === '') {
+            pigString = 'ay'
+            let finalString = word.slice(2,).concat(word.slice(0, 2)).concat(pigString);
+            return phrase.push(finalString);
+          }
+          else if ((word[i] === 't' && word[i + 1] === 'r') && pigString === '') {
+            pigString = 'ay'
+            let finalString = word.slice(2,).concat(word.slice(0, 2)).concat(pigString);
+            return phrase.push(finalString);
+          }
+          else if (word[i] === vowels[j] && pigString === '') {
+            pigString = 'ay'
+            let finalString = word.slice(1,).concat(word.slice(0, 1)).concat(pigString);
+            return phrase.push(finalString);
+          }
+        }
+      }
+    }
+    )
+    return phrase.join(' ').toLowerCase().replace(/[?.!,]/g, '')
+  }
+
   let isSentByCurrentUser = false
   const trimmedName = name.trim().toLowerCase()
   if (user === trimmedName) {
@@ -64,7 +108,7 @@ const Message = ({ message: { user, text }, name }) => {
         </Name>
         <BubbleUser>
           <MessageP>
-            {ReactEmoji.emojify(text)}
+            {piglify ? translatePigLatin(text) : ReactEmoji.emojify(text)}
           </MessageP>
         </BubbleUser>
       </MessageWrapperUser>
@@ -73,7 +117,7 @@ const Message = ({ message: { user, text }, name }) => {
         <MessageWrapperOther>
           <BubbleOther>
             <MessageP>
-              {ReactEmoji.emojify(text)}
+              {piglify ? translatePigLatin(text) : ReactEmoji.emojify(text)}
             </MessageP>
           </BubbleOther>
           <Name>
