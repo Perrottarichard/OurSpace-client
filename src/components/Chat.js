@@ -57,7 +57,7 @@ const Chat = ({ location }) => {
   const [users, setUsers] = useState('')
   const [client, setClient] = useState(false)
   const [error, setError] = useState(null)
-  const [piglify, setPiglify] = useState(true)
+  const [piglify, setPiglify] = useState(false)
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
@@ -65,8 +65,8 @@ const Chat = ({ location }) => {
     setRoom(room)
 
     if (!client) {
-      socket = io('https://r-space-server.herokuapp.com', { transports: ['polling'] })
-      // socket = io('http://localhost:5000', { transports: ['websocket'] })
+      // socket = io('https://r-space-server.herokuapp.com', { transports: ['polling'] })
+      socket = io('http://localhost:5000', { transports: ['websocket'] })
       socket.emit('join', { name, room })
       setClient(true)
     }
