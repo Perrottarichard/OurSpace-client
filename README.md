@@ -24,9 +24,19 @@ https://github.com/Perrottarichard/OurSpace-server
 * typed emoticons are converted to emojis
 
 ## UI
+
+### SignIn
 ![Alt text](https://raw.github.com/perrottarichard/OurSpace-client/master/rspacescreenshots/signin.png)
+
+### Dark Theme
 ![Alt text](https://raw.github.com/perrottarichard/OurSpace-client/master/rspacescreenshots/darkdemo.png)
+
+### Light Theme
 ![Alt text](https://raw.github.com/perrottarichard/OurSpace-client/master/rspacescreenshots/lightdemo.png)
+
+### 'Nurple' Theme
 ![Alt text](https://raw.github.com/perrottarichard/OurSpace-client/master/rspacescreenshots/nurpledemo.png)
+
+### Chatroom
 ![Alt text](https://raw.github.com/perrottarichard/OurSpace-client/master/rspacescreenshots/anotheruser.png)
 
